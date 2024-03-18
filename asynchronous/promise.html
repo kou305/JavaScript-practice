@@ -1,0 +1,29 @@
+<html>
+
+<body>
+    <button>ボタン</button>
+    <script>
+        function sleep(ms) {
+            const btn = document.querySelector('button');
+            function clickHandler() {
+                let instance = new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        var date = new Date();
+                        var second = date.getSeconds();
+                        if (second % 2) {
+                            reject(`${second}は奇数のため、エラーとします。`);
+                        } else {
+                            resolve(`${second}は偶数のため、成功とします。`)
+                        }
+
+                    })
+                })
+
+
+
+            }
+            btn.addEventListener('click', clickHandler);
+    </script>
+</body>
+
+</html>
