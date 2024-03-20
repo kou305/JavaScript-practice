@@ -1,0 +1,36 @@
+<html>
+
+<body>
+    <button>ボタン</button>
+    <script>
+        const btn = document.querySelector('button');
+
+        /**
+        * 1秒後にHello!を出力するDeferred対応関数。必ずresolveする
+        * 以下より引用
+        * https://techblog.yahoo.co.jp/programming/jquery-deferred/
+        *
+        * @returns Promise
+        */
+        function delayHello() {
+            var d = new $.Deferred;
+            setTimeout(function () {
+                console.log('Hello!');
+                d.resolve();
+            }, 1000);
+            return d.promise();
+        }
+
+        function hello() {
+            console.log('こんにちは');
+        }
+
+        function do_resolve() {
+            delayHello()
+                .then(hello)
+        }
+        btn.addEventListener('click', do_resolve);
+    </script>
+</body>
+
+</html>
